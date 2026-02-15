@@ -1,0 +1,8 @@
+name: ExpExchange
+main: morskoi\ExpExchange\ExpExchange
+api: 5.0.0
+version: 1.0.0
+author: morskoi den
+permissions:
+  exp.cmd:
+    default: true

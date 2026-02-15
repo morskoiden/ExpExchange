@@ -1,0 +1,29 @@
+# Config ExpExchange by morskoi den
+# Command
+command-name: "exp"  # Name command
+command-aliases: ["expex"] # Aliases command
+command-description: "" # Description command
+# Menu
+menu-name: "§6Experience Exchange" # The title displayed at the top of the exchange menu # Menu title
+# Small XP Bottle (15 Levels)
+15-xp-name: "§aSmall XP Bottle §7(15 Levels)"
+15-xp-lore: "§7Click to exchange:§r\n§f• 15 Experience Levels§r\n§f• 1 Empty Glass Bottle"
+# Medium XP Bottle (30 Levels)
+30-xp-name: "§eMedium XP Bottle §7(30 Levels)"
+30-xp-lore: "§7Click to exchange:§r\n§f• 30 Experience Levels§r\n§f• 1 Empty Glass Bottle"
+# Large XP Bottle (45 Levels)
+45-xp-name: "§cLarge XP Bottle §7(45 Levels)"
+45-xp-lore: "§7Click to exchange:§r\n§f• 45 Experience Levels§r\n§f• 1 Empty Glass Bottle"
+# Item
+# Use {LEVEL} placeholder to show the XP amount dynamically
+bottle-name: "§bExperience Bottle §7[{LEVEL} Levels]"
+bottle-lore: "§7Right-click to receive §b{LEVEL} §7experience levels"
+# Messages
+# Message when player doesn't have enough XP
+message-not-xp: "§cInsufficient Experience! §7Required: §f{LEVEL} §7levels"
+
+# Message when player doesn't have a glass bottle
+message-not-bottle: "§cYou need an §fEmpty Glass Bottle §cto exchange!"
+
+# Message when exchange is successful
+message-give: "§aSuccess! §7Received bottled experience worth §f{LEVEL} §7levels"
