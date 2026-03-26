@@ -5,4 +5,5 @@ branches:
 projects:
   ExpExchange:
     path: ""
+    icon: "expexchange_icon.png"
 ...
