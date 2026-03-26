@@ -14,6 +14,7 @@ use muqsit\invmenu\transaction\InvMenuTransactionResult;
 use morskoi\ExpExchange\command\ExpCommand;
 use pocketmine\event\player\PlayerItemUseEvent;
 use pocketmine\utils\Config;
+use pocketmine\world\sound\ClickSound;
 
 class ExpExchange extends PluginBase implements Listener {
     private Config $cfg;
@@ -26,7 +27,7 @@ class ExpExchange extends PluginBase implements Listener {
         $this->configData = $this->getConfig()->getAll();
 
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
-        $this->getServer()->getCommandMap()->register("Exp", new ExpCommand($this));
+        $this->getServer()->getCommandMap()->register("ExpExchange", new ExpCommand($this));
     }
     public function getConfig(): Config 
     {
@@ -61,7 +62,7 @@ class ExpExchange extends PluginBase implements Listener {
                 return $transaction->discard();
             }
             $requiredLevel = (int) $xpType;
-            $errorMsg = str_replace("{LEVEL}", (string) $requiredLevel, $this->configData["message-not-xp"]);
+            $errorMsg = str_replace("{LEVEL}", (string) $requiredLevel, $this->getConfig()->get("message-not-xp"));
 
             if ($p->getXpManager()->getXpLevel() < $requiredLevel) {
                 $p->sendMessage($errorMsg);
@@ -79,15 +80,15 @@ class ExpExchange extends PluginBase implements Listener {
             
             $p->getXpManager()->subtractXpLevels($requiredLevel);
             $expBottle = VanillaItems::EXPERIENCE_BOTTLE();
-            $name = str_replace("{LEVEL}", $requiredLevel, $this->configData["bottle-name"]);
-            $lore = str_replace("{LEVEL}", $requiredLevel, $this->configData["bottle-lore"]);
+            $name = str_replace("{LEVEL}", $requiredLevel, $this->getConfig()->get("bottle-name"));
+            $lore = str_replace("{LEVEL}", $requiredLevel, $this->getConfig()->get("bottle-lore"));
 
             $expBottle->setCustomName($name);
             $expBottle->setLore([$lore]);
             $expBottle->getNamedTag()->setString("exp_bottle", (string) $requiredLevel);
             
             $p->getInventory()->addItem($expBottle);
-            $successMsg = str_replace("{LEVEL}", (string) $requiredLevel, $this->configData["message-give"]);
+            $successMsg = str_replace("{LEVEL}", (string) $requiredLevel, $this->getConfig()->get("message-give"));
             $p->sendMessage($successMsg);
             
             return $transaction->discard();
@@ -111,7 +112,8 @@ class ExpExchange extends PluginBase implements Listener {
         $e->cancel();
         
         $p->getXpManager()->addXpLevels($xp);
-        
+
+        $p->getWorld()->addSound($p->getPosition(), new ClickSound(), [$p]);
         $item->pop();
         $p->getInventory()->setItemInHand($item);
     }
