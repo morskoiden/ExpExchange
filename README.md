@@ -1,1 +1,4 @@
 ExpExchange is a plugin that allows players to convert their experience levels into bottled items. Players can open an exchange menu using a command, where they can trade their XP levels and an empty glass bottle for a custom experience bottle. When the bottled item is used, it grants the player the stored amount of experience levels. The plugin supports three exchange tiers: 15, 30, and 45 levels. All messages, item names, and lore can be customized through the configuration file.
+
+Photo Menu
+<img width="522" height="234" alt="image" src="https://github.com/user-attachments/assets/c1ddc81f-3fa9-48aa-80bd-407fe0ed3d8a" />
