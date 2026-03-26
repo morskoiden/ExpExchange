@@ -3,7 +3,7 @@ main: morskoi\ExpExchange\ExpExchange
 api: 5.0.0
 version: 1.0.0
 author: morskoi den
-depend: [InvMenu]
+virions: ["InvMenu"]
 permissions:
   expexchange.cmd:
     default: true
